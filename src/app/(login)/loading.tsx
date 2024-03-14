@@ -4,8 +4,9 @@ import React from 'react'
 
 export default function Loading() {
     return (
-        <main className="bg-blue-100 h-screen flex justify-center items-center">
-            {/* <CircularProgress /> */}
-        </main>
+        <></>
+        // <main className="bg-blue-100 h-screen flex justify-center items-center">
+        //     {/* <CircularProgress /> */}
+        // </main>
     )
 }

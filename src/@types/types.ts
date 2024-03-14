@@ -7,4 +7,5 @@ export type AuthRegister = {
 export type AuthLogin = {
     email: string
     senha: string
+    exp: string
 }
