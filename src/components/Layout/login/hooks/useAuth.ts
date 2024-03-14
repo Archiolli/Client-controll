@@ -17,7 +17,7 @@ export default function useLogin() {
             setLoading(true)
             const result = await doLogin(data)
             if (!!result) {
-                enqueueSnackbar(result.message, action(closeSnackbar, 'success'))
+                enqueueSnackbar("Logado com sucesso!", action(closeSnackbar, 'success'))
                 router.push("/home")
             }
             else {

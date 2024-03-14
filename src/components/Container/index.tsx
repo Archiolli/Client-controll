@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants'
 interface IContainerProps extends ComponentProps<'div'> {}
 
 const container = tv({
-    base: "flex flex-col lg:w-full w-screen h-full justify-center items-center gap-12 p-12"
+    base: "flex flex-col lg:w-full w-screen h-full justify-center items-center"
 })
 
 const Container = ({ className, children, ...rest }: IContainerProps) => {

@@ -40,13 +40,13 @@ yup.setLocale({
 
 
 export const schema_login = yup.object({
-    usuario:yup.string().required().label("usuário"),
+    email:yup.string().required().label("Email"),
     senha:yup.string().required().label("senha")
 })
 
 export const schema_register = yup.object({
     nome:yup.string().required().label("nome"),
-    usuario:yup.string().required().label("usuário"),
+    email:yup.string().required().label("email"),
     senha:yup.string().required().label("senha")
 })
 

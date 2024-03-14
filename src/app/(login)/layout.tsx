@@ -10,9 +10,9 @@ export default function Layout({ children }: PropsWithChildren) {
             className={`h-screen ${inter.className}`}
             style={{ display: 'grid', gridTemplateRows: '60px 1fr' }}
         >
-            {/* <header>
-                <Navbar />
-            </header> */}
+            <header className='bg-blue-100'>
+                {/* <Navbar /> */}
+            </header>
 
             <main className="flex-grow bg-blue-100">{children}</main>
         </body>

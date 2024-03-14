@@ -1,11 +1,10 @@
-export type Auth = {
+export type AuthRegister = {
     nome: string,
-    user: string,
-    message: string,
-    token: string,
+    email: string
+    senha: string
 }
 
-export type Login = {
-    usuario: string,
+export type AuthLogin = {
+    email: string
     senha: string
 }
