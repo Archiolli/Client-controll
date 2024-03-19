@@ -51,7 +51,28 @@ export const schema_register = yup.object({
 })
 
 
+export const schema_processo = yup.object({
+    id: yup.number().label('id'),
+    nome: yup.string().required().label('nome'),
+    docs: yup.string().required().label('docs'),
+    consultorId: yup.number().label('consultorId'),
+    observacao: yup.string().required().label('observacao'),
+    prazoAplicacao: yup.string().required().label('prazo aplicacao'),
+    prioridade: yup.string().required().label('prioridade'),
+    empresaAberta: yup.string().required().label('empresaAberta'),
+    buisinessPlan: yup.string().required().label('buisinessPlan'),
+    diploma: yup.string().required().label('diploma'),
+    historico: yup.string().required().label('historico'),
+    equivalencia: yup.string().required().label('equivalencia'),
+    lor: yup.string().required().label('lor'),
+    status: yup.string().required().label('status'),
+    userId: yup.number().label('userId'),
+    vistoId: yup.number().label('vistoId')
+})
 
 export type FormLoginType = yup.InferType<typeof schema_login>
 
 export type FormRegisterType = yup.InferType<typeof schema_register>
+
+
+export type FormProcesso = yup.InferType<typeof schema_processo>

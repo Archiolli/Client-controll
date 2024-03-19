@@ -18,7 +18,7 @@ export default function Layout({ children }: PropsWithChildren) {
             <header className='flex-grow bg-white'>
                 <Navbar currentUser={user?.nome} />
             </header>
-            <main className="flex-grow bg-gray-200">{children}</main>
+            <main className="flex-grow bg-white">{children}</main>
         </body>
     )
 }

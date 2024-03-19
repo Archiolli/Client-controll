@@ -7,13 +7,13 @@ const Navbar = ({ currentUser }: { currentUser?: string }) => {
     const handleLogout = async () => await doLogout()
 
     return (
-        <div className='flex justify-between items-center h-full px-5 bg-gradient-to-l from-yellow-500 via-yellow-600 to-yellow-700'>
+        <div className='flex justify-between items-center h-full px-10 bg-gradient-to-l from-yellow-500 via-yellow-600 to-yellow-700'>
             <div className='text-white'>
-                {`Olá ${currentUser}`}
+                {`Olá, ${currentUser}`}
             </div>
-            <div className="flex h-full items-center">
-                <p className='text-xs text-white'>&copy; Archiolli - 2024</p>
+            <div className="flex flex-col h-full justify-center items-center">
                 <CiLogout onClick={handleLogout} className='text-white ml-2 text-2xl cursor-pointer' />
+                {/* <p className='text-xs text-white'>&copy; Archiolli - 2024</p> */}
             </div>
         </div>
     )

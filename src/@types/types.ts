@@ -12,3 +12,23 @@ export type AuthLogin = {
     senha: string
     exp: string
 }
+
+
+export type Processo = {
+    id: number,
+    nome: string,
+    docs: string,
+    consultorId: number,
+    observacao: string,
+    prazoAplicacao: string,
+    prioridade: string,
+    empresaAberta: string,
+    buisinessPlan: string,
+    diploma: string,
+    historico: string,
+    equivalencia: string,
+    lor: string,
+    status: string,
+    userId: number,
+    vistoId: number
+}
