@@ -5,6 +5,9 @@ export type AuthRegister = {
 }
 
 export type AuthLogin = {
+    user?: {
+        nome: string
+    }
     email: string
     senha: string
     exp: string

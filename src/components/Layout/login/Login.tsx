@@ -5,7 +5,8 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { schema_login } from '@/utils/schemas'
 import useAuth from './hooks/useAuth'
-import { FaPassport } from "react-icons/fa";
+import { GiPassport } from 'react-icons/gi'
+import { montSerrat } from '@/app/(login)/layout'
 
 const Login = () => {
     const {
@@ -20,8 +21,8 @@ const Login = () => {
     return (
         <Container>
             <form onSubmit={handleSubmit(handleLogin)}>
-                <div className=" h-full w-full shadow-xl bg-white py-10 px-10">
-                    <div className='flex justify-center w-full pb-2'><FaPassport className='h-20 w-20'/></div>
+                <div className=" h-full w-full shadow-xl  py-10 px-10">
+                    <div className={`flex justify-center w-full pb-2 items-center text-xl ${montSerrat.className}`}>Client Controll<GiPassport className='h-10 w-10'/></div>
                     <div>
                         <div className="relative flex flex-col gap-6 w-72">
                             <div className="h-10 w-full min-w-[200px]">
@@ -49,7 +50,7 @@ const Login = () => {
                         </div>
                         <div className="w-full justify-center flex mt-5">
                             <button
-                                className="select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                className="select-none rounded-lg bg-gradient-to-l from-yellow-500 via-yellow-600 to-yellow-700 py-3 px-6 text-center align-middle text-xs uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                 type="submit"
                             >
                                 Entrar
