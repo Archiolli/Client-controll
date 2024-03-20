@@ -3,8 +3,9 @@ import Container from "../Container";
 import Image from "next/image";
 import imageExpl from "../../../public/images/image.png"
 import { CiCircleInfo } from "react-icons/ci";
+import { Consultor, Processo } from "@/@types/types";
 
-export default function Home() {
+export default function Home({ consultores, user, processos }: { consultores?: Consultor[], user: number, processos: Processo[] }) {
     return (
         <Container>
             <div className="justify-start items-start flex h-full w-full p-10">
@@ -29,32 +30,38 @@ export default function Home() {
                                     </tr>
                                 </thead>
                                 <tbody className="text-sm font-light ">
-                                    <tr className="border-b border-gray-200 bg-white ">
-                                        <td className="py-3 px-6 text-left">
-                                            <div className="flex items-center">
-                                                <div className="mr-2">
-                                                    <Image className=" h-6 rounded-full w-full" alt="sg" src={imageExpl} />
-                                                </div>
-                                                <span className="font-medium">SG Global Group</span>
-                                            </div>
-                                        </td>
-                                        <td className="py-3 px-6 text-left">
-                                            <div className="flex items-center">
-                                                <span>Taylan Bush</span>
-                                            </div>
-                                        </td>
-                                        <td className="py-3 px-6 text-center">
-                                            <div className="flex items-center justify-center">
-                                                <span className="bg-green-800 text-white py-1 px-3 rounded-full text-sm">Ok</span>
-                                            </div>
-                                        </td>
-                                        <td className="py-3 px-6 text-center">
-                                            <div className="flex items-center justify-center">
-                                                <CiCircleInfo className="text-3xl text-black" />
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr className="border-b border-gray-200 bg-white ">
+
+                                    {!!processos && (processos?.map((val) => {
+                                        return (
+                                            <tr className="border-b border-gray-200 bg-white ">
+                                                <td className="py-3 px-6 text-left">
+                                                    <div className="flex items-center">
+                                                        <div className="mr-2">
+                                                            <Image className=" h-6 rounded-full w-full" alt="sg" src={imageExpl} />
+                                                        </div>
+                                                        <span className="font-medium">{val.empresaAberta}</span>
+                                                    </div>
+                                                </td>
+                                                <td className="py-3 px-6 text-left">
+                                                    <div className="flex items-center">
+                                                        <span>{val.nome}</span>
+                                                    </div>
+                                                </td>
+                                                <td className="py-3 px-6 text-center">
+                                                    <div className="flex items-center justify-center">
+                                                        <span className="bg-green-800 text-white py-1 px-3 rounded-full text-sm">{val.status}</span>
+                                                    </div>
+                                                </td>
+                                                <td className="py-3 px-6 text-center">
+                                                    <div className="flex items-center justify-center">
+                                                        <CiCircleInfo className="text-3xl text-black" />
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        )
+                                    }))}
+
+                                    {/* <tr className="border-b border-gray-200 bg-white ">
                                         <td className="py-3 px-6 text-left">
                                             <div className="flex items-center">
                                                 <div className="mr-2">
@@ -78,7 +85,7 @@ export default function Home() {
                                                 <CiCircleInfo className="text-3xl text-black" />
                                             </div>
                                         </td>
-                                    </tr>
+                                    </tr> */}
 
                                 </tbody>
                             </table>

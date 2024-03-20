@@ -13,7 +13,8 @@ export async function getAllProcesso(token: string): Promise<Processo[]> {
         }
         const resp = await fetch(`${process.env.API_URL}/processo`, option)
         const data = await resp.json()
-        return resp.status == 200 ? data.data as Processo[] : []
+        return resp.status == 200 ? data as Processo[] : []
+
     }
     catch (err: unknown) {
         return []

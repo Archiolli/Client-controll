@@ -17,11 +17,11 @@ export default function Layout({ children }: PropsWithChildren) {
             className={`h-screen ${inter.className}`}
             style={{ display: 'grid', gridTemplateRows: '60px 1fr' }}
         >
-            <header className='bg-gray-200'>
+            <header className='bg-white'>
                 {/* <Navbar /> */}
             </header>
 
-            <main className="flex-grow bg-gray-200">{children}</main>
+            <main className="flex-grow bg-white">{children}</main>
         </body>
     )
 }

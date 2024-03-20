@@ -5,14 +5,34 @@ export type AuthRegister = {
 }
 
 export type AuthLogin = {
-    user?: {
-        nome: string
-    }
     email: string
     senha: string
+}
+
+export type LoginResponse = {
+    user: {
+        id: number
+        nome: string
+        email: string
+    }
+    backEndTokens: {
+        acssesToken: string
+        refreshToken: string
+    }
     exp: string
 }
 
+export type Consultor = {
+    id: number
+    nome: string
+    userId: number
+}
+
+export type Vistos = { 
+    id: number
+    tipo: string,
+    userId: number
+}
 
 export type Processo = {
     id: number,

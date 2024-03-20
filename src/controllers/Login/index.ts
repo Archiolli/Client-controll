@@ -1,8 +1,8 @@
 "use server"
-import { AuthLogin } from '@/@types/types'
+import { AuthLogin, LoginResponse } from '@/@types/types'
 import { cookies } from 'next/headers'
 
-export async function doLogin(login: AuthLogin): Promise<AuthLogin | undefined> {
+export async function doLogin(login: AuthLogin): Promise<LoginResponse | undefined> {
     try {
         const { email, senha } = login
         const options: RequestInit = {
@@ -18,7 +18,9 @@ export async function doLogin(login: AuthLogin): Promise<AuthLogin | undefined> 
 
         const cookieStore = cookies()
         if (resp.status == 201) {
-            const result = { user: email, ...data } as AuthLogin
+            const result = { user:{
+                email,
+            }, ...data } as LoginResponse
             cookieStore.set('auth', JSON.stringify(result))
             return result
         }

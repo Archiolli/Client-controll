@@ -74,5 +74,4 @@ export type FormLoginType = yup.InferType<typeof schema_login>
 
 export type FormRegisterType = yup.InferType<typeof schema_register>
 
-
 export type FormProcesso = yup.InferType<typeof schema_processo>

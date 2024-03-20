@@ -1,9 +1,12 @@
 import Home from "@/components/home"
+import { getAllProcesso } from "@/controllers/Processos"
 import useAuth from "@/hooks/useAuth"
 
-export default function Page() {
-    useAuth()
+export default async function Page() {
+    const { backEndTokens, user } = useAuth()
+    const processos = await getAllProcesso(backEndTokens.acssesToken)
+    
     return (
-        <Home />
+        <Home user={user.id} processos={processos} />
     )
 }
