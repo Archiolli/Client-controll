@@ -1,11 +1,21 @@
-"use client";
+"use client"
+import { useRef } from 'react';
 import Container from "../Container";
 import Image from "next/image";
 import imageExpl from "../../../public/images/image.png"
 import { CiCircleInfo } from "react-icons/ci";
 import { Consultor, Processo } from "@/@types/types";
+import Modal from '../Modal'; // Importe o componente Modal
 
 export default function Home({ consultores, user, processos }: { consultores?: Consultor[], user: number, processos: Processo[] }) {
+    const modalRef = useRef<any>()
+
+    const openModal = () => {
+        if (modalRef.current) {
+            modalRef.current.openModal(); // Chame a função openModal do componente Modal
+        }
+    };
+
     return (
         <Container>
             <div className="justify-start items-start flex h-full w-full p-10">
@@ -15,6 +25,7 @@ export default function Home({ consultores, user, processos }: { consultores?: C
                             <p className="text-2xl font-medium text-black pb-8">Processos em andamento</p>
                             <button
                                 className="select-none rounded-lg bg-gradient-to-l from-yellow-500 via-yellow-600 to-yellow-700 py-3 px-6 text-center align-middle text-xs uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                onClick={openModal} // Adicione um manipulador de clique para abrir o modal
                             >
                                 Novo
                             </button>
@@ -61,40 +72,13 @@ export default function Home({ consultores, user, processos }: { consultores?: C
                                         )
                                     }))}
 
-                                    {/* <tr className="border-b border-gray-200 bg-white ">
-                                        <td className="py-3 px-6 text-left">
-                                            <div className="flex items-center">
-                                                <div className="mr-2">
-                                                    <Image className=" h-6 rounded-full w-full" alt="sg" src={imageExpl} />
-                                                </div>
-                                                <span className="font-medium">SG Global Group</span>
-                                            </div>
-                                        </td>
-                                        <td className="py-3 px-6 text-left">
-                                            <div className="flex items-center">
-                                                <span>Adan Wood</span>
-                                            </div>
-                                        </td>
-                                        <td className="py-3 px-6 text-center">
-                                            <div className="flex items-center justify-center">
-                                                <span className="bg-red-800 text-white py-1 px-3 rounded-full text-sm">Parado</span>
-                                            </div>
-                                        </td>
-                                        <td className="py-3 px-6 text-center">
-                                            <div className="flex items-center justify-center">
-                                                <CiCircleInfo className="text-3xl text-black" />
-                                            </div>
-                                        </td>
-                                    </tr> */}
-
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
+            <Modal processo={processos} ref={modalRef}  />
         </Container>
     );
 }
-
-
