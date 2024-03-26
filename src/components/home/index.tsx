@@ -1,21 +1,23 @@
 "use client"
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Container from "../Container";
 import Image from "next/image";
 import imageExpl from "../../../public/images/image.png"
 import { CiCircleInfo } from "react-icons/ci";
 import { Consultor, Processo } from "@/@types/types";
-import Modal from '../Modal'; // Importe o componente Modal
+import Modal from '../Modal'; 
 
 export default function Home({ consultores, user, processos }: { consultores?: Consultor[], user: number, processos: Processo[] }) {
+
+    const [valueForm, setValueForm] = useState<Processo | undefined>()
     const modalRef = useRef<any>()
 
-    const openModal = () => {
+    const openModal = (prop: Processo) => {
+        setValueForm(prop);
         if (modalRef.current) {
-            modalRef.current.openModal(); // Chame a função openModal do componente Modal
+            modalRef.current.openModal()
         }
-    };
-
+    }
     return (
         <Container>
             <div className="justify-start items-start flex h-full w-full p-10">
@@ -25,7 +27,6 @@ export default function Home({ consultores, user, processos }: { consultores?: C
                             <p className="text-2xl font-medium text-black pb-8">Processos em andamento</p>
                             <button
                                 className="select-none rounded-lg bg-gradient-to-l from-yellow-500 via-yellow-600 to-yellow-700 py-3 px-6 text-center align-middle text-xs uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                onClick={openModal} // Adicione um manipulador de clique para abrir o modal
                             >
                                 Novo
                             </button>
@@ -50,7 +51,7 @@ export default function Home({ consultores, user, processos }: { consultores?: C
                                                         <div className="mr-2">
                                                             <Image className=" h-6 rounded-full w-full" alt="sg" src={imageExpl} />
                                                         </div>
-                                                        <span className="font-medium">{val.empresaAberta}</span>
+                                                        <span className="font-medium">{val.empresaResp}</span>
                                                     </div>
                                                 </td>
                                                 <td className="py-3 px-6 text-left">
@@ -60,12 +61,17 @@ export default function Home({ consultores, user, processos }: { consultores?: C
                                                 </td>
                                                 <td className="py-3 px-6 text-center">
                                                     <div className="flex items-center justify-center">
-                                                        <span className="bg-green-800 text-white py-1 px-3 rounded-full text-sm">{val.status}</span>
+                                                        <span className={` text-white py-1 px-3 rounded-full text-sm
+                                                        ${val.status === "Ok" ? 'bg-green-500' : val.status === "Providência necessária" ? 'bg-red-500' :
+                                                         val.status === "Aguardando resposta do consultor" ? 'bg-orange-800' : val.status === "Aguardando cliente" ? 'bg-yellow-500' :
+                                                         val.status === "Aguardando providencia de terceiro" ? 'bg-blue-500' :
+                                                         val.status === "Não possuímos ou processo parado" ? 'bg-gray-700' : 'bg-slate-400'}
+                                                        `}>{val.status}</span>
                                                     </div>
                                                 </td>
                                                 <td className="py-3 px-6 text-center">
                                                     <div className="flex items-center justify-center">
-                                                        <CiCircleInfo className="text-3xl text-black" />
+                                                        <CiCircleInfo onClick={() => openModal(val)} className="text-3xl text-black hover:cursor-pointer hover:text-yellow-700" />
                                                     </div>
                                                 </td>
                                             </tr>
@@ -78,7 +84,7 @@ export default function Home({ consultores, user, processos }: { consultores?: C
                     </div>
                 </div>
             </div>
-            <Modal processo={processos} ref={modalRef}  />
+            <Modal processo={valueForm} ref={modalRef} />
         </Container>
     );
 }

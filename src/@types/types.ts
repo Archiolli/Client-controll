@@ -48,7 +48,14 @@ export type Processo = {
     historico: string,
     equivalencia: string,
     lor: string,
+    empresaResp: string,
     status: string,
     userId: number,
+    consultor: {
+        nome: string
+    },
+    visto: {
+        tipo: string
+    }
     vistoId: number
 }
