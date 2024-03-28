@@ -1,4 +1,5 @@
-import Home from "@/components/home"
+"use server"
+import Home from "@/components/Layout/home"
 import { getAllProcesso } from "@/controllers/Processos"
 import useAuth from "@/hooks/useAuth"
 

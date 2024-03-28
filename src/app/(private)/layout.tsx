@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 const domine = Domine({ subsets: ['latin'] })
 
 export default function Layout({ children }: PropsWithChildren) {
-    const { email, user } = useAuth()
+    const { user } = useAuth()
 
     return (
         <body

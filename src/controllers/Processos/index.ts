@@ -20,3 +20,24 @@ export async function getAllProcesso(token: string): Promise<Processo[]> {
         return []
     }
 }
+
+
+export async function addProcesso(token: string, processo: FormProcesso): Promise<Processo | undefined> {
+    try {
+        const option: RequestInit = {
+            method: "POST",
+            body: JSON.stringify(processo),
+            headers: {
+                "authorization": `Bearer ${token}`,
+                "content-type": "application/json"
+            }
+
+        }
+        const resp = await fetch(`${process.env.API_URL}/processo`, option)
+        const data = await resp.json()
+        return resp.status == 201 ? data.data as Processo : undefined
+    }
+    catch (err: unknown) {
+        return undefined
+    }
+}

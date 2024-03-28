@@ -1,11 +1,12 @@
 "use client"
 import { useRef, useState } from 'react';
-import Container from "../Container";
+import Container from "../../Container";
 import Image from "next/image";
-import imageExpl from "../../../public/images/image.png"
+import imageExpl from "../../../../public/images/image.png"
 import { CiCircleInfo } from "react-icons/ci";
 import { Consultor, Processo } from "@/@types/types";
-import Modal from '../Modal'; 
+import Modal from './Modal';
+import Link from 'next/link';
 
 export default function Home({ consultores, user, processos }: { consultores?: Consultor[], user: number, processos: Processo[] }) {
 
@@ -25,11 +26,13 @@ export default function Home({ consultores, user, processos }: { consultores?: C
                     <div className="w-full ">
                         <div className="flex w-full justify-between items-start">
                             <p className="text-2xl font-medium text-black pb-8">Processos em andamento</p>
-                            <button
-                                className="select-none rounded-lg bg-gradient-to-l from-yellow-500 via-yellow-600 to-yellow-700 py-3 px-6 text-center align-middle text-xs uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                            >
-                                Novo
-                            </button>
+                            <Link href="/processo">
+                                <button
+                                    className="select-none rounded-lg bg-gradient-to-l from-yellow-500 via-yellow-600 to-yellow-700 py-3 px-6 text-center align-middle text-xs uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                >
+                                    Novo
+                                </button>
+                            </Link>
                         </div>
                         <div className="bg-white shadow-md rounded">
                             <table className="min-w-max w-full table-auto border-l border-r border-gray-200">
@@ -63,9 +66,9 @@ export default function Home({ consultores, user, processos }: { consultores?: C
                                                     <div className="flex items-center justify-center">
                                                         <span className={` text-white py-1 px-3 rounded-full text-sm
                                                         ${val.status === "Ok" ? 'bg-green-500' : val.status === "Providência necessária" ? 'bg-red-500' :
-                                                         val.status === "Aguardando resposta do consultor" ? 'bg-orange-800' : val.status === "Aguardando cliente" ? 'bg-yellow-500' :
-                                                         val.status === "Aguardando providencia de terceiro" ? 'bg-blue-500' :
-                                                         val.status === "Não possuímos ou processo parado" ? 'bg-gray-700' : 'bg-slate-400'}
+                                                                val.status === "Aguardando resposta do consultor" ? 'bg-orange-800' : val.status === "Aguardando cliente" ? 'bg-yellow-500' :
+                                                                    val.status === "Aguardando providencia de terceiro" ? 'bg-blue-500' :
+                                                                        val.status === "Não possuímos ou processo parado" ? 'bg-gray-700' : 'bg-slate-400'}
                                                         `}>{val.status}</span>
                                                     </div>
                                                 </td>

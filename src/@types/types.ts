@@ -43,7 +43,7 @@ export type Processo = {
     prazoAplicacao: string,
     prioridade: string,
     empresaAberta: string,
-    buisinessPlan: string,
+    businessPlan: string,
     diploma: string,
     historico: string,
     equivalencia: string,
