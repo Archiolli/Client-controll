@@ -7,7 +7,8 @@ import useAuth from "@/hooks/useAuth"
 export default async function Page() {
     const { backEndTokens } = useAuth()
     const consultores : Consultor[] = await getAllConsultores(backEndTokens.acssesToken)
+    
     return (
-        <ProcessoWrapper />
+        <ProcessoWrapper consultores={consultores} />
     )
 }

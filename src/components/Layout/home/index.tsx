@@ -1,5 +1,5 @@
 "use client"
-import { useRef, useState } from 'react';
+import { Children, useRef, useState } from 'react';
 import Container from "../../Container";
 import Image from "next/image";
 import imageExpl from "../../../../public/images/image.png"
@@ -46,40 +46,41 @@ export default function Home({ consultores, user, processos }: { consultores?: C
                                 </thead>
                                 <tbody className="text-sm font-light ">
 
-                                    {!!processos && (processos?.map((val) => {
-                                        return (
-                                            <tr className="border-b border-gray-200 bg-white ">
-                                                <td className="py-3 px-6 text-left">
-                                                    <div className="flex items-center">
-                                                        <div className="mr-2">
-                                                            <Image className=" h-6 rounded-full w-full" alt="sg" src={imageExpl} />
+                                    {!!processos && (Children.toArray((
+                                        processos?.map((val) => {
+                                            return (
+                                                <tr className="border-b border-gray-200 bg-white ">
+                                                    <td className="py-3 px-6 text-left">
+                                                        <div className="flex items-center">
+                                                            <div className="mr-2">
+                                                                <Image className=" h-6 rounded-full w-full" alt="sg" src={imageExpl} />
+                                                            </div>
+                                                            <span className="font-medium">{val.empresaResp}</span>
                                                         </div>
-                                                        <span className="font-medium">{val.empresaResp}</span>
-                                                    </div>
-                                                </td>
-                                                <td className="py-3 px-6 text-left">
-                                                    <div className="flex items-center">
-                                                        <span>{val.nome}</span>
-                                                    </div>
-                                                </td>
-                                                <td className="py-3 px-6 text-center">
-                                                    <div className="flex items-center justify-center">
-                                                        <span className={` text-white py-1 px-3 rounded-full text-sm
+                                                    </td>
+                                                    <td className="py-3 px-6 text-left">
+                                                        <div className="flex items-center">
+                                                            <span>{val.nome}</span>
+                                                        </div>
+                                                    </td>
+                                                    <td className="py-3 px-6 text-center">
+                                                        <div className="flex items-center justify-center">
+                                                            <span className={`text-white py-1 px-3 rounded-full text-sm
                                                         ${val.status === "Ok" ? 'bg-green-500' : val.status === "Providência necessária" ? 'bg-red-500' :
-                                                                val.status === "Aguardando resposta do consultor" ? 'bg-orange-800' : val.status === "Aguardando cliente" ? 'bg-yellow-500' :
-                                                                    val.status === "Aguardando providencia de terceiro" ? 'bg-blue-500' :
-                                                                        val.status === "Não possuímos ou processo parado" ? 'bg-gray-700' : 'bg-slate-400'}
+                                                                    val.status === "Aguardando resposta do consultor" ? 'bg-orange-800' : val.status === "Aguardando cliente" ? 'bg-yellow-500' :
+                                                                        val.status === "Aguardando providencia de terceiro" ? 'bg-blue-500' :
+                                                                            val.status === "Não possuímos ou processo parado" ? 'bg-gray-700' : 'bg-slate-400'}
                                                         `}>{val.status}</span>
-                                                    </div>
-                                                </td>
-                                                <td className="py-3 px-6 text-center">
-                                                    <div className="flex items-center justify-center">
-                                                        <CiCircleInfo onClick={() => openModal(val)} className="text-3xl text-black hover:cursor-pointer hover:text-yellow-700" />
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        )
-                                    }))}
+                                                        </div>
+                                                    </td>
+                                                    <td className="py-3 px-6 text-center">
+                                                        <div className="flex items-center justify-center">
+                                                            <CiCircleInfo onClick={() => openModal(val)} className="text-3xl text-black hover:cursor-pointer hover:text-yellow-700" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        }))))}
 
                                 </tbody>
                             </table>

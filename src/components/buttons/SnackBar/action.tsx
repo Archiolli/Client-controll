@@ -1,7 +1,6 @@
 import { OptionsObject, SnackbarKey } from "notistack";
 import { FunctionComponent, ReactNode } from "react";
-import { IoCloseOutline } from "react-icons/io5";
-
+import { IoCloseCircleOutline } from "react-icons/io5";
 
 type OptionsTypes = "success" | "error" | "default" | "warning" | "info"
 
@@ -28,7 +27,7 @@ export const action = <T extends OptionsTypes,>(closeSnackbar: (snackbarId: Snac
         variant: variant,
         action: (snackbarId: SnackbarKey) => (
             <ActionButton
-                endIcon={<IoCloseOutline />}
+                endIcon={<IoCloseCircleOutline />}
                 action={() => {
                     closeSnackbar(snackbarId);
                 }}
